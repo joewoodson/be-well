@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { IntentionsService } from '../../providers/intentions-service/intentions-service';
 
 /*
   Generated class for the HomePage page.
@@ -12,8 +13,12 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(private nav: NavController) {
+  constructor(private nav: NavController, private intentionsService: IntentionsService) {
 
+  }
+
+  setAlarm(){
+  	this.intentionsService.setAlarm();
   }
 
 }
