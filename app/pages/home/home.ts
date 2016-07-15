@@ -12,13 +12,19 @@ import { IntentionsService } from '../../providers/intentions-service/intentions
   templateUrl: 'build/pages/home/home.html',
 })
 export class HomePage {
+	public intentions: any;
 
   constructor(private nav: NavController, private intentionsService: IntentionsService) {
 
   }
 
-  setAlarm(){
-  	this.intentionsService.setAlarm();
+  setIntention(){
+  	this.intentionsService.setIntention();
+  	this.intentionsService.getIntentions()
+    .then(intentions => {
+      this.intentions = intentions;
+      console.log(this.intentions);
+    });
   }
 
 }
