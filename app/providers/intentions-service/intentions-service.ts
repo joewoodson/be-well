@@ -18,7 +18,7 @@ export class IntentionsService {
   setIntention(){
     LocalNotifications.schedule({
       text: "Delayed Notification",
-      at: new Date(new Date().getTime() + 15000),
+      at: new Date(new Date().getTime() + 5000),
       led: "FF0000",
       sound: null
     });

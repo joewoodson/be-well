@@ -3,9 +3,8 @@ import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { IntentionsService } from './providers/intentions-service/intentions-service';
 
-import { Page1 } from './pages/page1/page1';
-import { Page2 } from './pages/page2/page2';
 import { HomePage } from './pages/home/home';
+import { IntentionsListPage } from './pages/intentions-list/intentions-list';
 
 @Component({
   templateUrl: 'build/app.html',
@@ -22,9 +21,8 @@ class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage },    
-      { title: 'Page uno', component: Page1 },
-      { title: 'Page dos', component: Page2 }
+      { title: 'Home', component: HomePage },   
+      { title: 'Intentions', component: IntentionsListPage } 
     ];
 
   }
