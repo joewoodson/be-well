@@ -1,6 +1,9 @@
 <ion-header>
 
   <ion-navbar>
+  	<button menuToggle>
+  		<ion-icon name="menu"></ion-icon>
+  	</button>
     <ion-title>Your Intentions</ion-title>
   </ion-navbar>
 
@@ -9,11 +12,10 @@
 
 <ion-content padding>
 
-	<!-- <h1 *ngIf="intentions">{{intentions[0].text}}</h1>
-	<button (click)="setIntention()">Set Alarm</button> -->
+	<button (click)="addIntention()">Add intention</button>
 
 	<ion-list>
-		<ion-item *ngFor="let intention of intentions">
+		<ion-item (click)="intentionSelected(intention)" *ngFor="let intention of intentions">
 	      <h3>{{intention.text}}</h3>
 		</ion-item>
 	</ion-list>
