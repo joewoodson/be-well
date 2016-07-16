@@ -9,7 +9,13 @@
 
 <ion-content padding>
 
-	<h1 *ngIf="intentions">{{intentions[0].text}}</h1>
-	<button (click)="setIntention()">Set Alarm</button>
+	<!-- <h1 *ngIf="intentions">{{intentions[0].text}}</h1>
+	<button (click)="setIntention()">Set Alarm</button> -->
+
+	<ion-list>
+		<ion-item *ngFor="let intention of intentions">
+	      <h3>{{intention.text}}</h3>
+		</ion-item>
+	</ion-list>
 
 </ion-content>
