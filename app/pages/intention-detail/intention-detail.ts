@@ -18,6 +18,8 @@ export class IntentionDetailPage {
   	this.intention = params.get('intention');
   }
 
-  
+  ionViewWillUnload(){
+  	console.log('unloading!');
+  }
 
 }

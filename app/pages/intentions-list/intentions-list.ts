@@ -22,22 +22,23 @@ export class IntentionsListPage {
   // }
 
   private loadIntentions(){
-    // this.intentions = [];
+    this.intentions = [];
+    this.intentionsService.getIntentions().then(
+      data => {
+        this.intentions = [];
+        if (data.res.rows.length > 0) {
+          for (var i = 0; i < data.res.rows.length; i++) {
+            let item = data.res.rows.item(i);
+            this.intentions.push(new Intention(item.id, item.text, item.active, item.freq));
+          }
+        }
+      });
     // this.intentionsService.getIntentions().then(
     //   data => {
-    //     this.intentions = [];
-    //     if (data.res.rows.length > 0) {
-    //       for (var i = 0; i < data.res.rows.length; i++) {
-    //         let item = data.res.rows.item(i);
-    //         this.intentions.push(new Intention(item.id, item.text, item.active, item.freq));
-    //       }
-    //     }
-    //   });
-    this.intentions = [
-      {id: 1,text: 'test 1', active: false, freq: 3},
-      {id: 1,text: 'test 2', active: true, freq: 6},
-      {id: 1,text: 'test 3', active: true, freq: 1}      
-    ]
+    //     console.log(data);
+    //     this.intentions = data;
+    //   }
+    // )
   }
 
   public addIntention(){
@@ -48,7 +49,7 @@ export class IntentionsListPage {
     this.nav.push(IntentionDetailPage, { intention });
   }
 
-  private onPageDidEnter(){
+  private ionViewWillEnter(){
     this.loadIntentions();
   }
 
