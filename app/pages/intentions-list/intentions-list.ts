@@ -41,8 +41,9 @@ export class IntentionsListPage {
     // )
   }
 
-  public addIntention(){
-    this.nav.push(IntentionDetailPage);
+  public addIntention(intention){
+    intention = {};
+    this.nav.push(IntentionDetailPage, { intention });
   }
 
   public intentionSelected(intention){

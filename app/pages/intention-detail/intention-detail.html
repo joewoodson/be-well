@@ -1,8 +1,8 @@
 <ion-header>
 
   <ion-navbar>
-  	<ion-title *ngIf="!intention">Add an intention</ion-title>
-    <ion-title *ngIf="intention">{{intention.text}}</ion-title>
+  	<ion-title *ngIf="!intention.text">Add an intention</ion-title>
+    <ion-title *ngIf="intention.text">{{intention.text}}</ion-title>
   </ion-navbar>
 
 </ion-header>
