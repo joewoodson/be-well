@@ -37,10 +37,7 @@ export class IntentionsService {
   }
 
   public saveIntention(intention){
-    console.log(intention);
-    if (!intention.id) {
-      this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, true, 3]);    
-    }
+    this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, true, 3]);    
   }
 
   public setIntention(){
