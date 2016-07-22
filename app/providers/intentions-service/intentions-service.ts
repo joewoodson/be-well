@@ -23,7 +23,7 @@ export class IntentionsService {
 
   constructor() {
     this.storage = new Storage(SqlStorage, {name: 'be-wellDb'});
-    this.storage.query('CREATE TABLE IF NOT EXISTS intentions (text TEXT, active TEXT, freq INTEGER)');
+    this.storage.query('CREATE TABLE IF NOT EXISTS intentions (id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT, active TEXT, freq INTEGER)');
     this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', ['this is a test intention', true, 3]);        
   }
 
@@ -38,6 +38,9 @@ export class IntentionsService {
 
   public saveIntention(intention){
     console.log(intention);
+    if (!intention.id) {
+      this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, true, 3]);    
+    }
   }
 
   public setIntention(){

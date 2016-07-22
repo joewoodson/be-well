@@ -19,11 +19,17 @@ export class IntentionDetailPage {
   }
 
   saveIntention(intention){
-    this.intentionsService.saveIntention(intention);
+    if(!intention.id) {
+      this.intentionsService.saveIntention(intention);
+      this.nav.pop();
+    } else {
+      console.log(intention.id);
+    }
+
   }
 
   ionViewWillUnload(){
-  	console.log('unloading!');
+
   }
 
 }

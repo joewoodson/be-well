@@ -32,7 +32,6 @@ export class IntentionsListPage {
             this.intentions.push(new Intention(item.id, item.text, item.active, item.freq));
           }
         }
-        console.log(this.intentions);
       });
     // this.intentionsService.getIntentions().then(
     //   data => {
