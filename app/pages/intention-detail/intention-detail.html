@@ -11,8 +11,14 @@
 <ion-content padding>
 	
 	<ion-item>
-      <ion-input type="text" value={{intention.text}} placeholder="Intention text" [(ngModel)]="intention.text"></ion-input>
+    	<ion-input type="text" value={{intention.text}} placeholder="Intention text" [(ngModel)]="intention.text"></ion-input>
     </ion-item>
+    <ion-item>
+		<ion-input type="number" value={{intention.freq}} placeholder="Frequency" [(ngModel)]="intention.freq"></ion-input>
+    </ion-item>
+    <ion-item>
+    	<ion-toggle [(ngModel)]="intention.active"></ion-toggle>
+  	</ion-item>
     <button (click)="saveIntention(intention)">Save</button>
 
 </ion-content>
