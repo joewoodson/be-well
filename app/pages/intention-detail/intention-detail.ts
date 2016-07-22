@@ -14,8 +14,12 @@ import { IntentionsService, Intention } from '../../providers/intentions-service
 export class IntentionDetailPage {
 	intention: Intention;
 
-  constructor(private nav: NavController, private params: NavParams) {
+  constructor(private nav: NavController, private params: NavParams, private intentionsService: IntentionsService) {
   	this.intention = params.get('intention');
+  }
+
+  saveIntention(intention){
+    this.intentionsService.saveIntention(intention);
   }
 
   ionViewWillUnload(){
