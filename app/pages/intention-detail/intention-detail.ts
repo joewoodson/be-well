@@ -23,7 +23,8 @@ export class IntentionDetailPage {
       this.intentionsService.saveIntention(intention);
       this.nav.pop();
     } else {
-      console.log(intention.id);
+      this.intentionsService.updateIntention(intention);
+      this.nav.pop();
     }
 
   }

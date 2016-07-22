@@ -40,6 +40,11 @@ export class IntentionsService {
     this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, true, 3]);    
   }
 
+  public updateIntention(intention){
+    console.log(intention.id);
+    this.storage.query('UPDATE intentions SET text = \"' + intention.text + '\", active = \"' + true + '\", freq = \"' + 3 + '\" WHERE id = \"' + intention.id + '\"');    
+  }
+
   public setIntention(){
     LocalNotifications.schedule({
       text: "Delayed Notification",
