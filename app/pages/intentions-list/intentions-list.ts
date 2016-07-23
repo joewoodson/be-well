@@ -42,7 +42,7 @@ export class IntentionsListPage {
   }
 
   public addIntention(intention){
-    intention = {};
+    intention = {active: true};
     this.nav.push(IntentionDetailPage, { intention });
   }
 

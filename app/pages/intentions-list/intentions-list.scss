@@ -1,3 +1,21 @@
-.intentions-list {
+.intention {
+	margin-bottom: 30px;
+	padding: 18px 12px;
+	border-left: 6px solid #387ef5;
+}
 
+.quote {
+	font-size: 22px;
+	font-style: italic;
+	padding: 3px;
+	padding-left: 8px;
+	margin-bottom: 20px
+}
+
+.quote:before {
+	content: "\"";
+}
+
+.quote:after {
+	content: "\"";
 }

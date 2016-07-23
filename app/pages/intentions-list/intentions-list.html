@@ -12,12 +12,11 @@
 
 <ion-content padding>
 
-	<button (click)="addIntention()">New intention</button>
+	<ion-card class="intention" (click)="intentionSelected(intention)" *ngFor="let intention of intentions" padding>
+		<p class="quote">{{intention.text}}</p>
+		<ion-toggle [(ngModel)]="intention.active"></ion-toggle>
+	</ion-card>
 
-	<ion-list>
-		<ion-item (click)="intentionSelected(intention)" *ngFor="let intention of intentions">
-	      <h3>{{intention.text}}</h3>
-		</ion-item>
-	</ion-list>
+	<button outline (click)="addIntention()"><ion-icon name="add"></ion-icon>Add intention</button>
 
 </ion-content>
