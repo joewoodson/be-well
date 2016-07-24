@@ -17,10 +17,6 @@ export class IntentionsListPage {
    //  });
   }
 
-  // setIntention(){
-  // 	this.intentionsService.setIntention();
-  // }
-
   private loadIntentions(){
     this.intentions = [];
     this.intentionsService.getIntentions().then(
@@ -33,12 +29,6 @@ export class IntentionsListPage {
           }
         }
       });
-    // this.intentionsService.getIntentions().then(
-    //   data => {
-    //     console.log(data);
-    //     this.intentions = data;
-    //   }
-    // )
   }
 
   public addIntention(intention){
@@ -46,8 +36,14 @@ export class IntentionsListPage {
     this.nav.push(IntentionDetailPage, { intention });
   }
 
-  public intentionSelected(intention){
-    this.nav.push(IntentionDetailPage, { intention });
+  public intentionSelected(e, intention){
+    if (e.target.tagName !== 'ION-TOGGLE') {
+      this.nav.push(IntentionDetailPage, { intention });
+    }
+  }
+
+  public toggleActive(intention){
+    this.intentionsService.updateActive(intention);
   }
 
   private ionViewWillEnter(){

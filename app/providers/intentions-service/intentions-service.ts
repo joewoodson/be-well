@@ -35,11 +35,17 @@ export class IntentionsService {
   }
 
   public updateIntention(intention){
-    console.log(intention.id);
     this.storage.query('UPDATE intentions SET text = \"' + intention.text + '\", active = \"' + intention.active + '\", freq = \"' + intention.freq + '\" WHERE id = \"' + intention.id + '\"');    
   }
 
-  public setIntention(){
+  public updateActive(intention){
+    let active = intention.active;
+    console.log(active);
+    console.log(intention.id);
+    this.storage.query('UPDATE intentions SET active = \"' + active + '\" WHERE id = \"' + intention.id + '\"');        
+  }
+
+  public setAlarm(){
     LocalNotifications.schedule({
       text: "Delayed Notification",
       at: new Date(new Date().getTime() + 5000),

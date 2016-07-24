@@ -29,8 +29,4 @@ export class IntentionDetailPage {
 
   }
 
-  ionViewWillUnload(){
-
-  }
-
 }

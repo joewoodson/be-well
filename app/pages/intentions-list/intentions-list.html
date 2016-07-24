@@ -12,11 +12,11 @@
 
 <ion-content padding>
 
-	<ion-card class="intention" (click)="intentionSelected(intention)" *ngFor="let intention of intentions" padding>
+	<ion-card class="intention" (click)="intentionSelected($event, intention)" *ngFor="let intention of intentions" padding>
 		<p class="quote">{{intention.text}}</p>
-		<ion-toggle [(ngModel)]="intention.active"></ion-toggle>
+		<ion-toggle (click)="toggleActive(intention)" [(ngModel)]="intention.active"></ion-toggle>
 	</ion-card>
 
-	<button outline (click)="addIntention()"><ion-icon name="add"></ion-icon>Add intention</button>
+	<button block (click)="addIntention()"><ion-icon name="add-circle"></ion-icon>Add intention</button>
 
 </ion-content>
