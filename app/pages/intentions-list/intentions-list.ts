@@ -25,10 +25,24 @@ export class IntentionsListPage {
         if (data.res.rows.length > 0) {
           for (var i = 0; i < data.res.rows.length; i++) {
             let item = data.res.rows.item(i);
+            item.freq = this.convertFreq(item.freq);
             this.intentions.push(new Intention(item.id, item.text, item.active, item.freq));
           }
         }
       });
+  }
+
+  public convertFreq(freq){
+    switch(freq) {
+      case 1:
+        return "once a day";
+      case 2:
+        return "twice a day";
+      case 3:
+        return "three times a day";
+      default:
+        return "several times a day";
+    }
   }
 
   public addIntention(intention){

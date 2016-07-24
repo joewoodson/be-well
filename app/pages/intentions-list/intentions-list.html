@@ -15,6 +15,7 @@
 	<ion-card class="intention" (click)="intentionSelected($event, intention)" *ngFor="let intention of intentions" padding>
 		<p class="quote">{{intention.text}}</p>
 		<ion-toggle (click)="toggleActive(intention)" [(ngModel)]="intention.active"></ion-toggle>
+    <p class="freq">{{intention.freq}}</p>
 	</ion-card>
 
 	<button block (click)="addIntention()"><ion-icon name="add-circle"></ion-icon>Add intention</button>
