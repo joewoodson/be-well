@@ -37,7 +37,8 @@ export class IntentionsListPage {
   }
 
   public intentionSelected(e, intention){
-    if (e.target.tagName !== 'ION-TOGGLE') {
+    console.log(e.target.tagName);
+    if (e.target.tagName !== 'ION-TOGGLE' && e.target.tagName !== 'BUTTON') {
       this.nav.push(IntentionDetailPage, { intention });
     }
   }
