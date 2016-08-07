@@ -31,28 +31,45 @@ export class IntentionsService {
   }
 
   public saveIntention(intention){
-    this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, intention.active, intention.freq]);    
+    this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, intention.active, intention.freq]);
+    this.storage.query('SELECT last_insert_rowid()').then(
+      data => {
+        var latestId = data.res.rows[0]["last_insert_rowid()"];
+        console.log(latestId);
+      });
   }
 
   public updateIntention(intention){
-    this.storage.query('UPDATE intentions SET text = \"' + intention.text + '\", active = \"' + intention.active + '\", freq = \"' + intention.freq + '\" WHERE id = \"' + intention.id + '\"');    
+    this.storage.query('UPDATE intentions SET text = \"' + intention.text + '\", active = \"' + intention.active + '\", freq = \"' + intention.freq + '\" WHERE id = \"' + intention.id + '\"');
   }
 
   public updateActive(intention){
     let active = intention.active;
-    console.log(active);
-    console.log(intention.id);
-    this.storage.query('UPDATE intentions SET active = \"' + active + '\" WHERE id = \"' + intention.id + '\"');        
+    this.storage.query('UPDATE intentions SET active = \"' + active + '\" WHERE id = \"' + intention.id + '\"');
+
+    if (active) {
+      this.setAlarm(intention);
+    } else {
+      this.cancelAlarm(intention.id);
+    }
   }
 
-  public setAlarm(){
+  public setAlarm(intention){
+    console.log(intention.id);
+    console.log(intention.text);
+    console.log(LocalNotifications.getAll());
     LocalNotifications.schedule({
-      text: "Delayed Notification",
-      at: new Date(new Date().getTime() + 5000),
+      id: intention.id,
+      text: intention.text,
+      at: new Date(new Date().getTime() + 10000),
       led: "FF0000",
       sound: null
     });
+    console.log(LocalNotifications.get(intention.id));
+  }
+
+  public cancelAlarm(id){
+    LocalNotifications.cancel(id);
   }
 
 }
-
