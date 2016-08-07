@@ -13,15 +13,26 @@ export class IntentionDetailPage {
   }
 
   saveIntention(intention){
-    if(!intention.id) {
+    if(!intention.id && intention.active) {
       this.intentionsService.saveIntention(intention);
       this.intentionsService.setAlarm(intention);
+      this.nav.pop();
+    } else if(!intention.id) {
+      this.intentionsService.saveIntention(intention);
       this.nav.pop();
     } else {
       this.intentionsService.updateIntention(intention);
       this.nav.pop();
     }
+  }
 
+  deleteIntention(intention){
+    if(!intention.id) {
+      this.nav.pop();
+    } else {
+      this.intentionsService.deleteIntention(intention);
+      this.nav.pop();
+    }
   }
 
 }

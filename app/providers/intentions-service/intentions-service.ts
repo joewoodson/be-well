@@ -32,11 +32,6 @@ export class IntentionsService {
 
   public saveIntention(intention){
     this.storage.query('INSERT INTO intentions (text, active, freq) VALUES (?,?,?)', [intention.text, intention.active, intention.freq]);
-    this.storage.query('SELECT last_insert_rowid()').then(
-      data => {
-        var latestId = data.res.rows[0]["last_insert_rowid()"];
-        console.log(latestId);
-      });
   }
 
   public updateIntention(intention){
@@ -70,6 +65,10 @@ export class IntentionsService {
 
   public cancelAlarm(id){
     LocalNotifications.cancel(id);
+  }
+
+  public deleteIntention(intention){
+    this.storage.query('DELETE FROM intentions WHERE id = \"' + intention.id + '\"');
   }
 
 }
